@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>calculator</title>
+      <style media="screen">
+          body, html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+          }
+          .content {
+            margin: 0;
+            padding: 5px;
+            height: 100%;
+            width: 60%;
+            background-color: orange;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          button {
+            border-radius: 13px;
+            font-size: 32px;
+            border: solid 2px red;
+            outline: none;
+            user-select: none;
+            margin: 2px;
+          }
+          .upperArea {
+            background-color: #ee90ee;
+            height: 40%;
+            width: 40%;
+            border: double 3px black;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px;
+          }
+          .lowerArea {
+            height: 20%;
+            width: 40%;
+            background-color: white;
+            border: double 3px black;
+            border-radius: 5px;
+            font-size: 18px;
+            padding: 5px;
+            margin: 5px;
+          }
+      </style>
+  </head>
+  <body>
+      <div class="content">
+          <div class="upperArea">
+              <button class="numbers" id="num1">1</button>
+              <button class="numbers" id="num2">2</button>
+              <button class="numbers" id="num3">3</button>
+              <button class="numbers" id="num4">4</button>
+              <button class="numbers" id="num5">5</button>
+              <br>
+              <button class="numbers" id="num6">6</button>
+              <button class="numbers" id="num7">7</button>
+              <button class="numbers" id="num8">8</button>
+              <button class="numbers" id="num9">9</button>
+              <button class="numbers" id="num0">0</button>
+              <br>
+              <br>
+              <button class="operators" id="addition">+</button>
+              <button class="operators" id="subtraction">-</button>
+              <button class="operators" id="multiplication">*</button>
+              <button class="operators" id="division">/</button>
+              <button class="operators" id="eq">=</button>
+              <button class="operators" id="delete">C</button>
+          </div>
+          <div class="lowerArea">
+              <p id="demo"></p>
+          </div>
+      </div>
+
+
+
+      <script>
+      document.getElementById("num1").addEventListener("click", change);
+      document.getElementById("num2").addEventListener("click", change);
+      document.getElementById("num3").addEventListener("click", change);
+      document.getElementById("num4").addEventListener("click", change);
+      document.getElementById("num5").addEventListener("click", change);
+      document.getElementById("num6").addEventListener("click", change);
+      document.getElementById("num7").addEventListener("click", change);
+      document.getElementById("num8").addEventListener("click", change);
+      document.getElementById("num9").addEventListener("click", change);
+      document.getElementById("num0").addEventListener("click", change);
+      document.getElementById("addition").addEventListener("click", op);
+      document.getElementById("subtraction").addEventListener("click", op);
+      document.getElementById("multiplication").addEventListener("click", op);
+      document.getElementById("division").addEventListener("click", op);
+      document.getElementById("eq").addEventListener("click", eql);
+      document.getElementById("delete").addEventListener("click", dlt);
+
+      function change() {
+        document.getElementById("demo").innerHTML += this.innerHTML;
+      };
+
+      function op () {
+        document.getElementById("demo").innerHTML += " " + this.innerHTML+ " ";
+      };
+
+      function eql () {
+        var x = document.getElementById("demo").innerHTML.split(" ");
+        var n1 = x[0];
+        var n2 = x[1];
+        var n3 = x[2];
+        if (n2 === "+") {
+          document.getElementById("demo").innerHTML = Number(n1)+Number(n3);
+        } else if (n2 === "-") {
+          document.getElementById("demo").innerHTML = Number(n1)-Number(n3);
+        } else if (n2 === "*") {
+          document.getElementById("demo").innerHTML = Number(n1)*Number(n3);
+        } else if (n2 === "/") {
+          document.getElementById("demo").innerHTML = Number(n1)/Number(n3);
+        }
+      };
+      function dlt () {
+        document.getElementById("demo").innerHTML = "";
+      };
+
+      </script>
+
+  </body>
+</html>
